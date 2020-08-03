@@ -15,6 +15,7 @@ Criar um aplicativo react com as seguintes características:
  - Página com detalhes da história.
    - Deve apresentar uma listagem de heróis com um link para o detalhe.
 
+Em cada página quanto maior o número de informações que apresentar da API melhor, porém lembre-se de deixar tudo claro e organizado.
 Quanto a experiencia e o estilo da página fique a vontade para criar, recomendamos que utilize os resources e imagens fornecidos pela API da Marvel.
 
 ### Pré-requisito
