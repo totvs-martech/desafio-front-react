@@ -25,6 +25,7 @@ Quanto a experiencia e o estilo da página fique a vontade para criar, recomenda
  - Criar o arquivo dockerfile para subir a aplicação.
  - Reutilização de componentes e centralização dos estilos.
  - Consumo de API rest.
+ - Para as páginas com listagem criar mecanismo de paginação (limit/offset da api)
 
 ### Desejável
 
