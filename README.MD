@@ -20,6 +20,7 @@ Quanto a experiencia e o estilo da página fique a vontade para criar, recomenda
 ### Pré-requisito
 
  - Construir o projeto utilizando react.
+ - Utilizar controle de estado com redux.
  - Implementar SSR (pode utilizar next).
  - Otimizações de SEO.
  - Criar o arquivo dockerfile para subir a aplicação.
