@@ -41,7 +41,7 @@ Quanto a experiencia e o estilo da página fique a vontade para criar, recomenda
  - styled-components theming: https://styled-components.com/docs/advanced.
 
 ### Entrega deste projeto
- - Crie uma branch deste projeto e realize todo o desenvolvimento necessário dentro da pasta ./src.
+ - Crie uma branch (tendo como origem a master) deste projeto e realize todo o desenvolvimento necessário dentro da pasta ./src.
  - Ao final crie um pull request para master e retorne o e-mail enviado com o esse desafio.
  - O prazo para entrega é 5 dias úteis após o recebimento do e-mail.
 
