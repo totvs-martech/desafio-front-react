@@ -9,9 +9,11 @@ Para esse desenvolvimento será necessário consumir a API da Marvel com dados d
 
 Criar um aplicativo react com as seguintes características:
  - Listagem de super heróis.
+   - Permitir filtrar informações da listagem.
  - Página com detalhes do super herói.
    - Deve apresentar uma listagem de histórias com um link para o detalhe.
  - Listagem de histórias.
+   - Permitir filtrar por data.
  - Página com detalhes da história.
    - Deve apresentar uma listagem de heróis com um link para o detalhe.
 
