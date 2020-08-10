@@ -1,5 +1,3 @@
-const withTM = require("next-transpile-modules")(["monorepo/components"]);
-
 module.exports = {
   webpackDevMiddleware: config => {
     config.watchOptions = {
@@ -11,5 +9,5 @@ module.exports = {
   }
 }
 
-
+const withTM = require("next-transpile-modules")(["monorepo/components"]);
 module.exports = withTM();
