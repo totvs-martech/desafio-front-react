@@ -1,17 +1,17 @@
 import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
-  heroesList: []
+  storiesList: []
 }
 
-export default function heroes(state = initialState, action) {
+export default function stories(state = initialState, action) {
   switch (action.type) {
     case HYDRATE: 
       return { ...state, ...action.payload }
-    case 'GET_HEROE':
+    case 'GET_STORIES':
       return { ...state, loading: true }
-    case 'HEROES_RECEIVED':
-      return { ...state, heroesList: action.heroesList, loading: false }
+    case 'STORIES_RECEIVED':
+      return { ...state, storiesList: action.storiesList, loading: false }
     default:
       return state
   }

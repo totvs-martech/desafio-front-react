@@ -7,13 +7,21 @@ import { createWrapper } from 'next-redux-wrapper'
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-const sagaMiddleware = createSagaMiddleware();
+const bindMiddleware = (middleware) => {
+  if (process.env.NODE_ENV !== 'production') {
+    const { composeWithDevTools } = require('redux-devtools-extension')
+    return composeWithDevTools(applyMiddleware(...middleware, logger))
+  }
+  return applyMiddleware(...middleware)
+}
 
-const store = createStore(
-  rootReducer, 
-  applyMiddleware(sagaMiddleware, logger)
-);
+export const makeStore = (context) => {
+  const sagaMiddleware = createSagaMiddleware()
+  const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
 
-sagaMiddleware.run(rootSaga)
+  store.sagaTask = sagaMiddleware.run(rootSaga)
 
-export default store;
+  return store
+}
+
+export const wrapper = createWrapper(makeStore, { debug: true })

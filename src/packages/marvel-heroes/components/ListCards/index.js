@@ -1,36 +1,51 @@
-import React, { useEffect } from 'react';
-
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { wrapper } from '../../store';
 import { getHeroes } from '../../store/actions/heroes';
-
 import * as HeroesActions from '../../store/actions/heroes';
+import Link from 'next/link'
 
 import styled from 'styled-components';
-
 import Card from '../Card';
+import { flexbox, layout } from 'styled-system';
 
-const ListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+const ListCards = _ => {
+  const { heroesList } = useSelector((state) => state).heroes;
+  const dispatch = useDispatch();
 
-const ListCards = ({ heroes = [], getHeroes }) => {
-  useEffect( _ => {
-    getHeroes();
-  }, []);
+  useEffect(() => {
+    dispatch(getHeroes())
+  }, [dispatch]);
 
   return (
-    <ListWrapper>
-      { heroes.map(heroe => <Card key={ heroe.id } heroe={heroe}/>) }
+    <ListWrapper display="flex" flexWrap='wrap'>
+      { heroesList.map(heroe => (
+        <Link key={ heroe.id } href="/heroe/[id]" as={`/heroe/${heroe.id}`}>
+          <LinkElement width={[ 1, 1/2, 1/2, 1/4, 1/4 ]}>
+            <Card heroe={heroe}/>
+          </LinkElement>
+        </Link>
+        )) 
+      }
     </ListWrapper>
   );
 }
 
-const mapStateToProps = state => ({ 
-  heroes: state.heroes.heroesList
-});
+const ListWrapper = styled.div`
+  ${layout};
+  ${flexbox};
+`;
 
-const mapDispatchToProps = dispatch => bindActionCreators(HeroesActions, dispatch);
+const LinkElement = styled.a`
+  background: #1f1f1f;
+  cursor: pointer;
+  position: relative;
+  max-height: 280px;
+  ${layout};
+`;
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListCards);
+// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
+//   console.log(store)
+// })
+
+export default ListCards;

@@ -1,14 +1,8 @@
-import React from 'react';
-
 import styled from 'styled-components';
 import { layout } from 'styled-system';
 
 const CardContainer = styled.div`
-  background: #1f1f1f;
-  cursor: pointer;
-  position: relative;
-  max-height: 280px;
-  ${layout};
+  height: 100%;
 `;
 
 const Thumbnail = styled.img`
@@ -42,7 +36,7 @@ const CardName = styled.p`
 `;
 
 const Card = (props) => (
-  <CardContainer width={1, 1/2, 1/4}>
+  <CardContainer>
     <Thumbnail src={`${props.heroe.thumbnail.path}.${props.heroe.thumbnail.extension}`} />
     <CardName>{ props.heroe.name }</CardName>
   </CardContainer>

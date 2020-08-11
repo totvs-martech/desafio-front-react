@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1",
-    "next-transpile-modules": "^4.0.2"
+    "next-transpile-modules": "^4.0.2",
+    "redux-devtools-extension": "^2.13.8"
   }
 }
