@@ -25,9 +25,6 @@ const Heroe = ({ heroe }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query
-  console.log(id)
-  // const res = await fetch(`${publicRuntimeConfig.API_URL}/movies?slug=${slug}`)
-  // const data = await res.json()
   return {
     props: {
       heroe: id

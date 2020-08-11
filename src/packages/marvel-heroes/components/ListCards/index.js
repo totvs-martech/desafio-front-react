@@ -10,7 +10,6 @@ import { flexbox, layout } from 'styled-system';
 
 const ListCards = _ => {
   const { heroesList } = useSelector((state) => state).heroes;
-  // console.log(limit);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,9 +42,5 @@ const LinkElement = styled.a`
   max-height: 280px;
   ${layout};
 `;
-
-// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-//   console.log(store)
-// })
 
 export default ListCards;
