@@ -11,7 +11,15 @@ export default function heroes(state = initialState, action) {
     case 'GET_HEROE':
       return { ...state, loading: true }
     case 'HEROES_RECEIVED':
-      return { ...state, heroesList: action.heroesList, loading: false }
+      return { 
+        ...state,
+        heroesList: action.characters.results, 
+        limit: action.characters.limit, 
+        total: action.characters.total, 
+        loading: false 
+      }
+    case 'SET_PAGE_HEROES':
+      return { ...state, page: action.characters.offset}
     default:
       return state
   }

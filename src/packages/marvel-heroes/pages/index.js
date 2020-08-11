@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Head from 'next/head'
 import styled, { ThemeProvider } from 'styled-components';
 // import { Button } from "@monorepo/components/Button";
@@ -7,9 +7,20 @@ import styled, { ThemeProvider } from 'styled-components';
 import ListCards from '../components/ListCards';
 import Navbar from '../components/Navbar';
 import WrapperCss from '../components/WrapperCss'
+import Pagination from '../components/Pagination';
+
+import { pageHeroes } from '../store/actions/heroes';
+
 import { wrapper } from '../store';
 
 const Home = _ => {
+  const { limit, total, paginate } = useSelector((state) => state).heroes;
+
+  const dispatch = useDispatch();
+  const page = pageNumber => {
+    dispatch(pageHeroes(pageNumber));
+  }
+
   return (
     <div>
         <Head>
@@ -20,6 +31,11 @@ const Home = _ => {
         <Navbar/>
         <WrapperCss>
           <ListCards/>
+          <Pagination 
+           offset={ limit }
+           total={ total }
+           paginate={ page }
+            />
         </WrapperCss>
     </div>
   )

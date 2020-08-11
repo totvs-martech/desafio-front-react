@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { wrapper } from '../../store';
-import { getHeroes } from '../../store/actions/heroes';
-import * as HeroesActions from '../../store/actions/heroes';
+import { getHeroes, pageHeroes } from '../../store/actions/heroes';
 import Link from 'next/link'
 
 import styled from 'styled-components';
@@ -11,10 +10,11 @@ import { flexbox, layout } from 'styled-system';
 
 const ListCards = _ => {
   const { heroesList } = useSelector((state) => state).heroes;
+  // console.log(limit);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHeroes())
+    dispatch(getHeroes());
   }, [dispatch]);
 
   return (

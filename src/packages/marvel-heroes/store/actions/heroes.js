@@ -3,3 +3,12 @@ export function getHeroes() {
     type: 'GET_HEROES'
   };
 }
+
+export function pageHeroes(page) {
+  return {
+    type: 'GET_PAGE_HEROES',
+    payload: {
+      page
+    }
+  }
+}
