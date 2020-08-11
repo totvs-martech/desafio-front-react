@@ -3,15 +3,15 @@ FROM node:12
 ENV PORT 3000
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/marvel-heroes
+WORKDIR /usr/src/marvel-heroes
 
 # Installing dependencies
-COPY package*.json /usr/src/app/
+COPY package*.json /usr/src/marvel-heroes/
 RUN yarn install
 
 # Copying source files
-COPY . /usr/src/app
+COPY . /usr/src/marvel-heroes
 
 # Building app
 RUN yarn build
