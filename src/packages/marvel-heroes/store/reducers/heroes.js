@@ -1,4 +1,8 @@
-export default function heroes(state = {}, action) {
+const initialState = {
+  heroesList: []
+}
+
+export default function heroes(state = initialState, action) {
   switch (action.type) {
     case 'GET_HEROE':
       return { ...state, loading: true };

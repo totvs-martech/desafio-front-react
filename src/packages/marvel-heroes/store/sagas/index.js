@@ -3,6 +3,7 @@ import apiFetchCharacters from '../api/fetchCharacters';
 
 function* fetchCharacters() {
   const res = yield apiFetchCharacters();
+  console.log(res);
   yield put({ type: 'HEROES_RECEIVED', heroesList: res.data.data.results || [{ error: res.statusText }]});
 }
 

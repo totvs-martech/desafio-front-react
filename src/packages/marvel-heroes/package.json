@@ -22,6 +22,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.11.1",
     "next-transpile-modules": "^4.0.2"
   }
 }
