@@ -5,17 +5,24 @@ import { wrapper } from '../../store';
 import { useRouter } from 'next/router';
 import { getStories } from '../../store/actions/stories';
 import { getHeroeInfo } from '../../store/actions/heroes';
+
+
 import Navbar from '../../components/Navbar';
 import WrapperCss from '../../components/WrapperCss';
+import ListHeroes from '../../components/ListHeroes';
+import ItemListHeroes from '../../components/ItemListHeroes';
+
+
 import styled from 'styled-components';
-import { flexbox, layout, color, background } from 'styled-system';
+import { flexbox, layout, space, background } from 'styled-system';
 
 const Heroe = ({ heroeId }) => {
   // console.log(useSelector(state => state))
   const store = useSelector((state) => state);
-  console.log(store)
+  // console.log(store)
   const { name, comics, series, stories, thumbnail } = store.heroes.characterInfo;
   const { storiesList } = store.stories;
+  console.log(storiesList, 'aaaaaaaaa')
 
   const backgroundUrl = `${thumbnail.path}.${thumbnail.extension}`;
 
@@ -39,7 +46,7 @@ const Heroe = ({ heroeId }) => {
         backgroundSize="cover"
       >
         <WrapperCss>
-          <CharacterInfoContainer display='flex' justifyContent='center'>
+          <CharacterInfoContainer display='flex' justifyContent='center' marginBottom='25px' >
             <CharacterInfoContent>
               <Thumbnail 
                 src={`${thumbnail.path}.${thumbnail.extension}`} 
@@ -55,6 +62,12 @@ const Heroe = ({ heroeId }) => {
             </CharacterInfoContent>
 
           </CharacterInfoContainer>
+
+          <ListHeroes>
+            { storiesList.map(storie => (
+              <ItemListHeroes key={storie.id}>{ storie.title }</ItemListHeroes>
+            )) }
+          </ListHeroes>
         </WrapperCss>
       </Background>
     </>
@@ -87,6 +100,7 @@ const CharacterText = styled.p`
 const CharacterInfoContainer = styled.div`
   ${layout}
   ${flexbox}
+  ${space}
 `;
 
 const CharacterInfoContent = styled.aside`
@@ -96,13 +110,13 @@ const CharacterInfoContent = styled.aside`
   }
   
   &:last-child {
-    margin-left: 20px;
-    width: 25%;
+    margin-left: 10px;
+    width: 45%;
   }
 `;
 
 const Thumbnail = styled.img`
-  max-height: 300px;
+  max-height: 250px;
   object-fit: contain;
   width: 100%;
 `;
