@@ -1,7 +1,24 @@
 import { HYDRATE } from 'next-redux-wrapper';
+import { actionTypes as heroesActionTypes } from '../actions/heroes';
 
 const initialState = {
-  heroesList: []
+  heroesList: [],
+  characterInfo: {
+    name: '',
+    thumbnail: {
+      path: '',
+      extension: ''
+    },
+    comics: {
+      avaliable: 0
+    },
+    stories: {
+      avaliable: 0
+    },
+    series: {
+      avaliable: 0
+    }
+  }
 }
 
 export default function heroes(state = initialState, action) {
@@ -20,6 +37,8 @@ export default function heroes(state = initialState, action) {
       }
     case 'SET_PAGE_HEROES':
       return { ...state, page: action.characters.offset}
+    case heroesActionTypes.HEROE_INFO_RECEIVED:
+      return { ...state, characterInfo: action.characterInfo }
     default:
       return state
   }
