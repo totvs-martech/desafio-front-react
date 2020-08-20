@@ -19,9 +19,7 @@ import { flexbox, layout, space, background } from 'styled-system';
 import Link from 'next/link';
 
 const Heroe = ({ heroeId }) => {
-  // console.log(useSelector(state => state))
   const store = useSelector((state) => state);
-  // console.log(store)
   const { name, comics, series, stories, thumbnail } = store.heroes.characterInfo;
   const { storiesList } = store.stories;
 
@@ -68,7 +66,7 @@ const Heroe = ({ heroeId }) => {
             { storiesList.map(storie => (
               <ItemListHeroes key={storie.id}>
                 <Link href="/storie/[id]" as={`/storie/${storie.id}`}>
-                  { storie.title }
+                  <a>{ storie.title }</a>
                 </Link>
               </ItemListHeroes>
             )) }

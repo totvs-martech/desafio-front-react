@@ -1,26 +1,39 @@
 import { useEffect } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
 import { useSelector, useDispatch } from 'react-redux';
-import Head from 'next/head'
+
 import styled, { ThemeProvider } from 'styled-components';
+import { flexbox, layout } from 'styled-system';
 // import { Button } from "@monorepo/components/Button";
 // import { Card } from '@monorepo/components/Card';
 
+import Card from '../components/Card';
 import ListCards from '../components/ListCards';
 import Navbar from '../components/Navbar';
 import WrapperCss from '../components/WrapperCss'
 import Pagination from '../components/Pagination';
 
-import { pageHeroes } from '../store/actions/heroes';
+import { pageHeroes, getHeroes } from '../store/actions/heroes';
+
 
 import { wrapper } from '../store';
 
 const Home = _ => {
-  const { limit, total, paginate } = useSelector((state) => state).heroes;
-
+  const { heroesList } = useSelector((state) => state).heroes;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getHeroes());
+  }, [dispatch]);
+
+  const { limit, total, paginate } = useSelector((state) => state).heroes;
   const page = pageNumber => {
     dispatch(pageHeroes(pageNumber));
   }
+
+
 
   return (
     <div>
@@ -31,7 +44,16 @@ const Home = _ => {
         </Head>
         <Navbar/>
         <WrapperCss>
-          <ListCards/>
+          <ListCards>
+            { heroesList.map(heroe => (
+              <Link key={ heroe.id } href="/heroe/[id]" as={`/heroe/${heroe.id}`}>
+                <LinkElement width={[ 1, 1/2, 1/2, 1/4, 1/4 ]}>
+                  <Card heroe={heroe} hoverColor='transparent'/>
+                </LinkElement>
+              </Link>
+              )) 
+            }
+          </ListCards>
           <Pagination 
            offset={ limit }
            total={ total }
@@ -54,3 +76,11 @@ const Home = _ => {
 // })
 
 export default Home;
+
+const LinkElement = styled.a`
+  background: #1f1f1f;
+  cursor: pointer;
+  position: relative;
+  max-height: 280px;
+  ${layout};
+`;

@@ -14,7 +14,6 @@ const Item = styled.li`
   color: #fff;
   cursor: pointer;
   font: 20px 'Roboto';
-  padding: 10px 25px;
   position: relative;
   transition: background .8s ease;
 
@@ -24,6 +23,8 @@ const Item = styled.li`
 
   a {
     color: #fff;
+    display: block;
+    padding: 10px 25px;
     text-decoration: none;
   }
 `;

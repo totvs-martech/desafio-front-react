@@ -8,7 +8,8 @@ breakpoints.xl = breakpoints[4];
 
 export default {
   colors: {
-    marvel_gray: '#202020'
+    marvel_gray: '#202020',
+    marvel_red: '#ec1d24'
   },
   breakpoints
 };

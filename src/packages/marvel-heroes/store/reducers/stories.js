@@ -5,7 +5,9 @@ const initialState = {
   storie: {
     results: [
       {
-        characters: [],
+        characters: {
+          items: []
+        },
         title: '',
         description: ''
       }
