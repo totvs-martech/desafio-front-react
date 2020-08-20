@@ -25,9 +25,9 @@ export default function heroes(state = initialState, action) {
   switch (action.type) {
     case HYDRATE: 
       return { ...state, ...action.payload }
-    case 'GET_HEROE':
+    case heroesActionTypes.GET_HEROES:
       return { ...state, loading: true }
-    case 'HEROES_RECEIVED':
+    case heroesActionTypes.HEROES_RECEIVED:
       return { 
         ...state,
         heroesList: action.characters.results, 
@@ -35,7 +35,7 @@ export default function heroes(state = initialState, action) {
         total: action.characters.total, 
         loading: false 
       }
-    case 'SET_PAGE_HEROES':
+    case heroesActionTypes.SET_PAGE_HEROES:
       return { ...state, page: action.characters.offset}
     case heroesActionTypes.HEROE_INFO_RECEIVED:
       return { ...state, characterInfo: action.characterInfo }
