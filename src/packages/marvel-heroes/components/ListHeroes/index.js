@@ -20,8 +20,9 @@ const List = styled.ul`
   margin: auto;
   max-height: 30vh;
   overflow-y: auto;
+  padding-top: 10px;
   position: relative;
-  width: 70%;
+  width: 50%;
   z-index: 0;
 
   &:before {
@@ -31,6 +32,21 @@ const List = styled.ul`
     position: absolute;
     width: 100%;
     z-index: -1;
+  }
+
+  &::-webkit-scrollbar {
+    background: #101010;
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #eb1e25;
   }
 `;
 

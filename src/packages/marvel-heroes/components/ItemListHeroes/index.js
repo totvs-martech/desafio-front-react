@@ -13,11 +13,17 @@ const Item = styled.li`
   background: transparent;
   color: #fff;
   cursor: pointer;
-  font: 16px 'Roboto';
+  font: 20px 'Roboto';
   padding: 10px 25px;
+  position: relative;
   transition: background .8s ease;
 
   &:hover {
-    background: #000;
+    background: #eb1e25;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 `;

@@ -1,37 +1,39 @@
 import { put, all, takeEvery } from 'redux-saga/effects';
 import { actionTypes as heroesActionTypes } from '../actions/heroes';
+import { actionTypes as storiesActionTypes } from '../actions/stories';
+
 import apiFetchCharacters from '../api/fetchCharacters';
 import apiFetchCharactersPage from '../api/fetchCharactersPage';
 import apiFetchStories from '../api/fetchStories';
 import apiFetchCharacterInfo from '../api/fetchCharacterInfo';
-import heroes from '../reducers/heroes';
+import apiFetchStorie from '../api/fetchStorie';
 
 function* fetchCharacters() {
   const res = yield apiFetchCharacters();
-  yield put({ type: 'HEROES_RECEIVED', characters: res.data.data || [{ error: res.statusText }]});
+  yield put({ type: heroesActionTypes.HEROES_RECEIVED, characters: res.data.data || [{ error: res.statusText }]});
 }
 
 function* actionCharacter() {
-  yield takeEvery('GET_HEROES', fetchCharacters)
+  yield takeEvery(heroesActionTypes.GET_HEROES, fetchCharacters)
 }
 
 function* fetchStories(action) {
   const res = yield apiFetchStories(action.payload.heroeId);
-  yield put({ type: 'STORIES_RECEIVED', storiesList: res.data.data.results || [{ error: res.statusText }]});
+  yield put({ type: storiesActionTypes.STORIES_RECEIVED, storiesList: res.data.data.results || [{ error: res.statusText }]});
 }
 
 function* actionStorie() {
-  yield takeEvery('GET_STORIES', fetchStories)
+  yield takeEvery(storiesActionTypes.GET_STORIES, fetchStories)
 }
 
 function* fetchCharactersPage(action) {
   // console.log(action)
   const res = yield apiFetchCharactersPage(action.payload.page);
-  yield put({ type: 'HEROES_RECEIVED', characters: res.data.data || [{ error: res.statusText }]});
+  yield put({ type: heroesActionTypes.HEROES_RECEIVED, characters: res.data.data || [{ error: res.statusText }]});
 }
 
 function* actionCharacterPage() {
-  yield takeEvery('GET_PAGE_HEROES', fetchCharactersPage)
+  yield takeEvery(heroesActionTypes.GET_PAGE_HEROES, fetchCharactersPage)
 }
 
 function* fetchCharacterInfo(action) {
@@ -51,6 +53,16 @@ function* actionCharacterInfo() {
   yield takeEvery(heroesActionTypes.GET_HEROE_INFO, fetchCharacterInfo)
 }
 
+function* fetchStorie(action) {
+  const res = yield apiFetchStorie(action.payload.storieId);
+  console.log(res);
+  yield put({ type: storiesActionTypes.STORIE_RECEIVED, storie: res.data.data || [{ error: res.statusText }]});
+}
+
+function* actionGetStorie() {
+  yield takeEvery(storiesActionTypes.GET_STORIE, fetchStorie)
+}
+
 
 
 export default function* rootSaga() {
@@ -58,6 +70,7 @@ export default function* rootSaga() {
     actionCharacter(),
     actionStorie(),
     actionCharacterPage(),
-    actionCharacterInfo()
+    actionCharacterInfo(),
+    actionGetStorie()
   ])
 };

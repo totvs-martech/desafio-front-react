@@ -16,13 +16,14 @@ import ItemListHeroes from '../../components/ItemListHeroes';
 import styled from 'styled-components';
 import { flexbox, layout, space, background } from 'styled-system';
 
+import Link from 'next/link';
+
 const Heroe = ({ heroeId }) => {
   // console.log(useSelector(state => state))
   const store = useSelector((state) => state);
   // console.log(store)
   const { name, comics, series, stories, thumbnail } = store.heroes.characterInfo;
   const { storiesList } = store.stories;
-  console.log(storiesList, 'aaaaaaaaa')
 
   const backgroundUrl = `${thumbnail.path}.${thumbnail.extension}`;
 
@@ -65,7 +66,11 @@ const Heroe = ({ heroeId }) => {
 
           <ListHeroes>
             { storiesList.map(storie => (
-              <ItemListHeroes key={storie.id}>{ storie.title }</ItemListHeroes>
+              <ItemListHeroes key={storie.id}>
+                <Link href="/storie/[id]" as={`/storie/${storie.id}`}>
+                  { storie.title }
+                </Link>
+              </ItemListHeroes>
             )) }
           </ListHeroes>
         </WrapperCss>

@@ -1,7 +1,16 @@
 import { HYDRATE } from 'next-redux-wrapper';
 
 const initialState = {
-  storiesList: []
+  storiesList: [],
+  storie: {
+    results: [
+      {
+        characters: [],
+        title: '',
+        description: ''
+      }
+    ]
+  }
 }
 
 export default function stories(state = initialState, action) {
@@ -12,6 +21,10 @@ export default function stories(state = initialState, action) {
       return { ...state, loading: true }
     case 'STORIES_RECEIVED':
       return { ...state, storiesList: action.storiesList, loading: false }
+    case 'GET_STORIE':
+      return { ...state, loading: true }
+    case 'STORIE_RECEIVED':
+      return { ...state, storie: action.storie, loading: false }
     default:
       return state
   }
