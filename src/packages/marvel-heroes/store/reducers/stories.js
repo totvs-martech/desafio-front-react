@@ -2,7 +2,11 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { actionTypes as storiesActionTypes } from '../actions/stories';
 
 const initialState = {
-  storiesList: [],
+  storiesList: {
+    limit: 0,
+    offset: 0,
+    results: []
+  },
   storie: {
     results: [
       {
@@ -28,6 +32,8 @@ export default function stories(state = initialState, action) {
       return { ...state, loading: true }
     case storiesActionTypes.STORIE_RECEIVED:
       return { ...state, storie: action.storie, loading: false }
+    case storiesActionTypes.SET_PAGE_STORIES:
+      return { ...state, storiePage: action.characters.offset}
     default:
       return state
   }

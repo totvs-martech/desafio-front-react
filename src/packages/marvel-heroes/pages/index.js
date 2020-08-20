@@ -16,24 +16,25 @@ import WrapperCss from '../components/WrapperCss'
 import Pagination from '../components/Pagination';
 
 import { pageHeroes, getHeroes } from '../store/actions/heroes';
-
+import { setHeroesPage } from '../store/actions/pagination';
 
 import { wrapper } from '../store';
 
 const Home = _ => {
-  const { heroesList } = useSelector((state) => state).heroes;
+  const store = useSelector((state) => state);
+  const { heroesList, limit, total } = store.heroes;
+  const { currentPageHeroes } = store.pagination;
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getHeroes());
   }, [dispatch]);
 
-  const { limit, total, paginate } = useSelector((state) => state).heroes;
   const page = pageNumber => {
-    dispatch(pageHeroes(pageNumber));
+    dispatch(setHeroesPage(pageNumber));
+    dispatch(pageHeroes(pageNumber * limit));
   }
-
-
 
   return (
     <div>
@@ -58,6 +59,7 @@ const Home = _ => {
            offset={ limit }
            total={ total }
            paginate={ page }
+           currentPage={ currentPageHeroes }
             />
         </WrapperCss>
     </div>

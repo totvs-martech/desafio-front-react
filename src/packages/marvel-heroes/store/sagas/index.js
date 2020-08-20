@@ -7,6 +7,7 @@ import apiFetchCharactersPage from '../api/fetchCharactersPage';
 import apiFetchStories from '../api/fetchStories';
 import apiFetchCharacterInfo from '../api/fetchCharacterInfo';
 import apiFetchStorie from '../api/fetchStorie';
+import apiFetchStoriesPage from '../api/fetchStoriesPage';
 
 function* fetchCharacters() {
   const res = yield apiFetchCharacters();
@@ -19,7 +20,7 @@ function* actionCharacter() {
 
 function* fetchStories(action) {
   const res = yield apiFetchStories(action.payload.heroeId);
-  yield put({ type: storiesActionTypes.STORIES_RECEIVED, storiesList: res.data.data.results || [{ error: res.statusText }]});
+  yield put({ type: storiesActionTypes.STORIES_RECEIVED, storiesList: res.data.data || [{ error: res.statusText }]});
 }
 
 function* actionStorie() {
@@ -27,13 +28,21 @@ function* actionStorie() {
 }
 
 function* fetchCharactersPage(action) {
-  // console.log(action)
   const res = yield apiFetchCharactersPage(action.payload.page);
   yield put({ type: heroesActionTypes.HEROES_RECEIVED, characters: res.data.data || [{ error: res.statusText }]});
 }
 
 function* actionCharacterPage() {
   yield takeEvery(heroesActionTypes.GET_PAGE_HEROES, fetchCharactersPage)
+}
+
+function* fetchStoriesPage(action) {
+  const res = yield apiFetchStoriesPage(action.payload.page, action.payload.heroeId);
+  yield put({ type: storiesActionTypes.STORIES_RECEIVED, storiesList: res.data.data || [{ error: res.statusText }]});
+}
+
+function* actionStoriePage() {
+  yield takeEvery(storiesActionTypes.GET_PAGE_STORIES, fetchStoriesPage)
 }
 
 function* fetchCharacterInfo(action) {
@@ -55,7 +64,6 @@ function* actionCharacterInfo() {
 
 function* fetchStorie(action) {
   const res = yield apiFetchStorie(action.payload.storieId);
-  console.log(res);
   yield put({ type: storiesActionTypes.STORIE_RECEIVED, storie: res.data.data || [{ error: res.statusText }]});
 }
 
@@ -71,6 +79,7 @@ export default function* rootSaga() {
     actionStorie(),
     actionCharacterPage(),
     actionCharacterInfo(),
-    actionGetStorie()
+    actionGetStorie(),
+    actionStoriePage()
   ])
 };

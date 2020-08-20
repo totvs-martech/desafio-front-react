@@ -18,11 +18,10 @@ const List = styled.ul`
   background: linear-gradient(175deg,rgb(0 0 0 / 37%),rgb(16 16 16 / 32%));
   box-shadow: 0px 0px 53px 2px rgba(0,0,0,0.75);
   margin: auto;
-  max-height: 30vh;
+  max-height: 50vh;
   overflow-y: auto;
   padding-top: 10px;
   position: relative;
-  width: 50%;
   z-index: 0;
 
   &:before {

@@ -10,6 +10,9 @@ import Navbar from '../../components/Navbar';
 import WrapperCss from '../../components/WrapperCss';
 import Card from '../../components/Card';
 import ListCards from '../../components/ListCards';
+import Pagination from '../../components/Pagination';
+
+import { setStoriesPage } from '../../store/actions/pagination';
 
 import styled from 'styled-components';
 import { color, layout } from 'styled-system';
@@ -20,8 +23,8 @@ const Storie = ({ storieId }) => {
     dispatch(getStorie(storieId))
   }, [dispatch]);
 
-  const storie = useSelector((state) => state.stories.storie.results[0]);
-  const { characters, title, description } = storie;
+  const store = useSelector((state) => state);
+  const { characters, title, description } = store.stories.storie.results[0];
 
   return (
     <>

@@ -12,16 +12,22 @@ import WrapperCss from '../../components/WrapperCss';
 import ListHeroes from '../../components/ListHeroes';
 import ItemListHeroes from '../../components/ItemListHeroes';
 
+import Pagination from '../../components/Pagination';
+
+import { setStoriesPage } from '../../store/actions/pagination';
+import { pageStories } from '../../store/actions/stories';
 
 import styled from 'styled-components';
 import { flexbox, layout, space, background } from 'styled-system';
+
 
 import Link from 'next/link';
 
 const Heroe = ({ heroeId }) => {
   const store = useSelector((state) => state);
   const { name, comics, series, stories, thumbnail } = store.heroes.characterInfo;
-  const { storiesList } = store.stories;
+  console.log(store)
+  const { limit, total, results } = store.stories.storiesList;
 
   const backgroundUrl = `${thumbnail.path}.${thumbnail.extension}`;
 
@@ -31,6 +37,14 @@ const Heroe = ({ heroeId }) => {
     dispatch(getStories(heroeId))
     dispatch(getHeroeInfo(heroeId))
   }, [dispatch]);
+
+  const { characters, title, description } = store.stories.storie.results[0];
+  const { currentPageStories } = store.pagination;
+
+  const page = pageNumber => {
+    dispatch(setStoriesPage(pageNumber));
+    dispatch(pageStories(pageNumber * limit, heroeId));
+  }
 
   return (
     <>
@@ -63,7 +77,7 @@ const Heroe = ({ heroeId }) => {
           </CharacterInfoContainer>
 
           <ListHeroes>
-            { storiesList.map(storie => (
+            { results.map(storie => (
               <ItemListHeroes key={storie.id}>
                 <Link href="/storie/[id]" as={`/storie/${storie.id}`}>
                   <a>{ storie.title }</a>
@@ -71,6 +85,13 @@ const Heroe = ({ heroeId }) => {
               </ItemListHeroes>
             )) }
           </ListHeroes>
+
+          <Pagination 
+            offset={ limit }
+            total={ total }
+            paginate={ page }
+            currentPage={ currentPageStories }
+          />
         </WrapperCss>
       </Background>
     </>
@@ -125,7 +146,7 @@ const Thumbnail = styled.img`
 `;
 
 const Background = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   left: 0;
   position: absolute;
   top: 0; 
