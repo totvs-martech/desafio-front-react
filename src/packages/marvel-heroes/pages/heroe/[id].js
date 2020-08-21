@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { wrapper } from '../../store';
-import { useRouter } from 'next/router';
 import { getStories } from '../../store/actions/stories';
 import { getHeroeInfo } from '../../store/actions/heroes';
 
@@ -26,7 +24,6 @@ import Link from 'next/link';
 const Heroe = ({ heroeId }) => {
   const store = useSelector((state) => state);
   const { name, comics, series, stories, thumbnail } = store.heroes.characterInfo;
-  console.log(store)
   const { limit, total, results } = store.stories.storiesList;
 
   const backgroundUrl = `${thumbnail.path}.${thumbnail.extension}`;
@@ -91,6 +88,10 @@ const Heroe = ({ heroeId }) => {
             total={ total }
             paginate={ page }
             currentPage={ currentPageStories }
+            colorsButton = {{
+              primary: 'marvel_gray', 
+              secondary: '#fff' 
+            }} 
           />
         </WrapperCss>
       </Background>

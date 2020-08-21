@@ -4,10 +4,8 @@ import Link from 'next/link';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import styled, { ThemeProvider } from 'styled-components';
-import { flexbox, layout } from 'styled-system';
-// import { Button } from "@monorepo/components/Button";
-// import { Card } from '@monorepo/components/Card';
+import styled from 'styled-components';
+import { layout } from 'styled-system';
 
 import Card from '../components/Card';
 import ListCards from '../components/ListCards';
@@ -17,8 +15,6 @@ import Pagination from '../components/Pagination';
 
 import { pageHeroes, getHeroes } from '../store/actions/heroes';
 import { setHeroesPage } from '../store/actions/pagination';
-
-import { wrapper } from '../store';
 
 const Home = _ => {
   const store = useSelector((state) => state);
@@ -65,17 +61,6 @@ const Home = _ => {
     </div>
   )
 }
-
-// export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-//   store.dispatch(tickClock(false));
-
-//   if (!store.getState().placeholderData) {
-//     store.dispatch(loadData());
-//     store.dispatch(END);
-//   }
-
-//   await store.sagaTask.toPromise();
-// })
 
 export default Home;
 

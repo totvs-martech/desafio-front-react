@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 import { color } from 'styled-system';
 
-const Pagination = ({ offset, total, paginate, currentPage }) => {
+const Pagination = ({ 
+    offset, 
+    total, 
+    paginate, 
+    currentPage, 
+    colorsButton = { 
+      primary: '#fff', 
+      secondary: 'marvel_gray' 
+    } 
+  }) => {
   const pageNumbers = [];
 
   for (let i = 0; i <= Math.ceil(total / offset) - 1; i++) {
@@ -19,9 +28,10 @@ const Pagination = ({ offset, total, paginate, currentPage }) => {
             <PaginationItem 
               key={number} 
               onClick={ () => handlePageClick(number) }
-              color={ number === currentPage ? '#fff' : 'marvel_gray' }
-              bg={ number === currentPage ? 'marvel_gray' : 'transparent' }>
+              color={ number === currentPage ? colorsButton.primary : colorsButton.secondary }
+              bg={ number === currentPage ? colorsButton.secondary : colorsButton.primary }>
               {number + 1}
+              
             </PaginationItem>
         )) }
      </PaginationStyle>
