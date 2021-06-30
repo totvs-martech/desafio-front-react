@@ -2,21 +2,21 @@ Este é um projeto [Next.js](https://nextjs.org/) criado com [`create-next-app`]
 
 ## Começando
 
-Primeiro, instale as dependências projetos:
+Primeiro, instale as dependências do projetos:
 
 ```bash
 yarn install
 ```
 
-Agora, crie o arquivo `.env.local` na raiz do projeto para poder acessar a API da Marvel. 
-Há um exemplo do arquivo `.env.local.example`. Você pode usá-lo ou criar um com suas credencias da Marvel.
+Agora, crie o arquivo `.env.local` na raiz do projeto com a PUBLIC_KEY e a PRIVATE_KEY da sua conta Marvel para poder acessar a API. 
+Há um exemplo do arquivo: `.env.local.example`. Você pode usá-lo ou criar um com suas credenciais da Marvel.
 
 Por fim, execute o servidor de desenvolvimento:
 
 ```bash
-npm run dev
-# or
 yarn dev
+# or
+npm run dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
