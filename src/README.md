@@ -8,8 +8,8 @@ Primeiro, instale as dependências do projeto:
 yarn install
 ```
 
-Agora, crie o arquivo `.env.local` na raiz do projeto com a PUBLIC_KEY e a PRIVATE_KEY da sua conta Marvel para poder acessar a API. 
-Há um exemplo do arquivo: `.env.local.example`. Você pode usá-lo ou criar um arquivo .env.local com suas credenciais da Marvel.
+Agora, crie o arquivo `.env.local` na raiz do projeto com a PUBLIC_KEY e a PRIVATE_KEY da sua conta Marvel para poder ter acesso a API da Marvel. 
+Há um exemplo no arquivo: `.env.local.example`. Você pode usá-lo para criar um arquivo .env.local ou criar um novo arquivo com suas credenciais da Marvel.
 
 Por fim, execute o servidor de desenvolvimento:
 
