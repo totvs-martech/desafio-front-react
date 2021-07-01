@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="container">
         <Link href="/">
           <a className="navbar-brand">
-            <img src="/logo.svg" alt="TOTVS STORE" height="24" className="d-inline-block align-text-top" />
+            <img src="/marvel.svg" alt="Marvel" height="32" className="d-inline-block align-text-top" />
           </a>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

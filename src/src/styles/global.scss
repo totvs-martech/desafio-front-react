@@ -1,3 +1,4 @@
+@import './colors.scss';
 
 .btn:focus, .btn:active, .form-control:focus, .form-control:active, .navbar-toggler:focus {
   outline: none;
@@ -11,7 +12,7 @@
 }
 
 .btn-link { 
-  color: #F00;
+  color: $red;
   text-decoration: none;
 }
 
@@ -27,17 +28,17 @@
 }
 
 .active {
-  border-bottom: 2px solid #F00;
-  color: #F00;
+  border-bottom: 2px solid $red;
+  color: $red;
 }
 
 .section-title {
   background: url('/assets/img/bg.jpg') center;
   h1{
-    color: #FFF;
+    color: $white;
   }
   p{
-    color: #FFF
+    color: $white;
   }
 }
 
