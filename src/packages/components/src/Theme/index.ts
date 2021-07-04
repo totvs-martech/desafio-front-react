@@ -1,29 +1,36 @@
 const theme = {
   colors: {
     button: {
-      primary: '#3B5BFD',
-      danger: '#DC2626',
-      light: '#FFFFFF'
+      active: '#ff7e5f',
+      primary: '#2B2C2D',
+      secundary: '#121214'
     },
-    primary: '#3B5BFD',
+    primary: '#ff7e5f',
     danger: '#DC2626',
     light: '#FFFFFF',
-    background: {
-      primary: '#f9fafb',
-      secundary: '#3B5BFD',
-      dark: '#24265B',
-      darkGrey: '#252F3F'
-    },
-    text: {
-      dark: '#2B2C2D',
-      grey: '#585A68',
-      lightGrey: '#7D828E',
-      light: '#ffffff'
-    }
+  },
+  text: {
+    dark: '#2B2C2D',
+    grey: '#585A68',
+    lightGrey: '#7D828E',
+    light: '#ffffff'
+  },
+  background: {
+    primary: '#121214',
+    secundary: '#2A2A31',
+    dark: '#202024',
+    light: '#383840'
   },
   border: {
-    primary: '1px solid #e4e4e7',
-    dashed: '2px dashed #e4e4e7'
+    primary: '2px solid #202024',
+    dashed: '2px dashed #202024'
+  },
+  spacing: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '32px',
+    xl: '64px'
   },
   screens: {
     sm: '640px',
