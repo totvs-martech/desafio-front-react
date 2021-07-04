@@ -8,6 +8,11 @@
       "packages/*"
     ]
   },
+  "scripts": {
+    "dev": "yarn workspace @monorepo/website dev",
+    "build": "yarn workspace @monorepo/website build",
+    "start": "yarn workspace @monorepo/website start"
+  },
   "author": "Guilherme Ribeiro Paitax",
   "license": "MIT"
 }
