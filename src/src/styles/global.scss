@@ -1,0 +1,89 @@
+@import './colors.scss';
+
+.btn:focus, .btn:active, .form-control:focus, .form-control:active, .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: none;
+  box-shadow: none;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.btn-link { 
+  color: $red;
+  text-decoration: none;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  max-height: 260px;
+}
+
+.card-img, .card-img-bottom, .card-img-top, .image-not-available {
+  object-position: left bottom;
+}
+
+.active {
+  border-bottom: 2px solid $red;
+  color: $red;
+}
+
+.section-title {
+  background: url('/assets/img/bg.jpg') center;
+  h1{
+    color: $white;
+  }
+  p{
+    color: $white;
+  }
+}
+
+.input-group {
+  max-width: 620px;
+}
+
+// Small devices (portrait phones, 575px and down)
+@media (max-width: 575px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 280px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 200px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 182px;
+  } 
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 182px;
+  } 
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 220px;
+  } 
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) { 
+  .card-img, .card-img-bottom, .card-img-top {
+    max-height: 260px;
+  } 
+}
